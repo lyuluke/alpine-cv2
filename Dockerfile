@@ -19,7 +19,7 @@ RUN apk add -U --no-cache --virtual=build-dependencies \
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \
     && pip install -U --no-cache-dir Pillow pytesseract numpy
 
-RUN mkdir /opt && cd /opt && \
+RUN mkdir -p /opt && cd /opt && \
     curl -L $OPENCV | tar zx && \
     cd opencv-$OPENCV_VER && \
     mkdir build && cd build && \
