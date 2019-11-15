@@ -10,10 +10,10 @@ RUN apk add -U --no-cache --virtual=build-dependencies \
     linux-headers musl libxml2-dev libxslt-dev libffi-dev g++ \
     musl-dev libgcc openssl-dev jpeg-dev zlib-dev freetype-dev build-base \
     lcms2-dev openjpeg-dev python3-dev make cmake clang clang-dev ninja \
-
     && apk add --no-cache gcc tesseract-ocr zlib jpeg libjpeg freetype openjpeg curl python3 \
     && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     && ln -s /usr/bin/python3 /usr/bin/python \
+    && rm -rf /usr/bin/pip \
     && ln -s /usr/bin/pip3 /usr/bin/pip \
     && curl $TESSDATA -o /usr/share/tessdata/eng.traineddata \
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \
