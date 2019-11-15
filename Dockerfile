@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM alpine:3.6
 
 ENV TESSDATA https://raw.githubusercontent.com/tesseract-ocr/tessdata/master/eng.traineddata
 ENV OPENCV https://github.com/opencv/opencv/archive/3.4.5.tar.gz
@@ -19,7 +19,7 @@ RUN apk add -U --no-cache --virtual=build-dependencies \
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \
     && pip install -U --no-cache-dir Pillow pytesseract numpy
 
-RUN mkdir -p /opt && cd /opt && \
+RUN mkdir /opt && cd /opt && \
     curl -L $OPENCV | tar zx && \
     cd opencv-$OPENCV_VER && \
     mkdir build && cd build && \
